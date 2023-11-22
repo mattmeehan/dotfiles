@@ -1,0 +1,13 @@
+colordiff
+coreutils
+curl
+fasd
+git
+git-flow
+python
+rsync
+the_silver_searcher
+tmux
+trash
+vim
+wget
