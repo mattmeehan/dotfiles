@@ -34,9 +34,7 @@ else
   printf "Add linux-specific instructions"
 fi
 
-
 printf "\nInstalling pyenv...\n"
-
 if [ ! -d ~/.pyenv ]
 then
 	# Install pyenv
@@ -65,20 +63,28 @@ printf "\nInstalling oh-my-zsh...\n"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-printf "\nSymlinking '*.symlink' files...\n"
+
 # Function to create symlink
 create_symlink() {
     ln -sv "$SOURCE_FILE" "$LINK_FILE"
     echo "Symlink created from $SOURCE_FILE to $LINK_FILE."
 }
 
+# vscode
+VSCODE_EXTENSIONS='./vscode/extensions.txt'
+cat $VSCODE_EXTENSIONS | xargs -I % code --install-extension %
+SOURCE_FILE="./vscode/settings.json"
+LINK_FILE="$HOME/.vscode/settings.json"
+create_symlink
+
+printf "\nSymlinking '*.symlink' files...\n"
 for SOURCE_FILE in $(find $(pwd) -name '*.symlink'); do
   LINK_FILE="$HOME/.$(basename ${SOURCE_FILE%.symlink})"
   # Check if the link file already exists
   if [ -e "$LINK_FILE" ]; then
     # Prompt the user for action
     read -p "$LINK_FILE already exists. Do you want to overwrite it? (y/n): " user_input
-    if [[ "$user_input" = "y" || "$user_input" = "Y" ]]; then
+    if ["$user_input" = "y"]; then
 	  rm $LINK_FILE
       create_symlink
     else
