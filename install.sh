@@ -20,11 +20,14 @@ if [ "$OS" = "Darwin" ]; then
   printf "\nInstalling Homebrew...\n"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   BREW_FORMULAE='./brew/formulae.txt'
+  BREW_FORMULAE_CASKS='./brew/formulae-casks.txt'
   BREW_FORMULAE_HEAD='./brew/formulae-head.txt'
   # Install brew formulae
   printf "Installing Homebrew formulae from '$BREW_FORMULAE' and '$BREW_FORMULAE_HEAD'..."
   xargs brew install <$BREW_FORMULAE
+  xargs brew install --cask <$BREW_FORMULAE_CASKS
   xargs brew install --HEAD <$BREW_FORMULAE_HEAD
+
 # Linux specific
 else
   # System packages

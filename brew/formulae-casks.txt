@@ -1,0 +1,6 @@
+1password
+alfred
+google-chrome
+docker
+iterm2
+visual-studio-code
