@@ -95,5 +95,9 @@ for SOURCE_FILE in $(find $(pwd) -name '*.symlink'); do
   fi
 done
 
+# Karabiner
+SOURCE_FILE="./config/karabiner"
+LINK_FILE="$HOME/.config"
+create_symlink
 
 printf "\nDone!"

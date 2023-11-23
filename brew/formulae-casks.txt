@@ -1,6 +1,7 @@
 1password
 alfred
-google-chrome
 docker
+google-chrome
+karabiner-elements
 iterm2
 visual-studio-code
