@@ -143,14 +143,14 @@ fi
   # }
 
   # dircolors {
-    autoload colors;
-    # Find the option for using colors in ls, depending on the version
-    ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=auto -F' || alias ls='ls -GF'
-    # Use dircolors if available
-    dircolors &>/dev/null 2>&1 && eval `dircolors $DOTFILES/zsh/dircolors.ansi-dark` || export LSCOLORS="Gxfxcxdxbxegedabagacad"
-    # Use GNU ls if available (for macOS: `brew install coreutils`)
-    gdircolors &>/dev/null 2>&1 && eval `gdircolors $DOTFILES/zsh/dircolors.ansi-dark` && alias ls='gls --color=auto -hF'
-    export GREP_COLOR='1;31'
+  #  autoload colors;
+  #  # Find the option for using colors in ls, depending on the version
+  #  ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=auto -F' || alias ls='ls -GF'
+  #  # Use dircolors if available
+  #  dircolors &>/dev/null 2>&1 && eval `dircolors $DOTFILES/zsh/dircolors.ansi-dark` || export LSCOLORS="Gxfxcxdxbxegedabagacad"
+  #  # Use GNU ls if available (for macOS: `brew install coreutils`)
+  #  gdircolors &>/dev/null 2>&1 && eval `gdircolors $DOTFILES/zsh/dircolors.ansi-dark` && alias ls='gls --color=auto -hF'
+  #  export GREP_COLOR='1;31'
   # }
 
   # git {
@@ -280,24 +280,6 @@ fi
 # Functions {
     # History search
     histsearch() { fc -lim "*$@*" 1 }
-
-    pip() {
-      # Don't install anything into base environment
-      if [[ -v CONDA_DEFAULT_ENV ]] then
-        string=$(which python)
-        word='envs'
-        if test "${string#*$word}" != "$string"; then
-          python -m pip $@
-        # Invoke pip directly through python
-        # See https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/
-        else
-          echo 'Python is not installed in this environment; not running'
-        fi
-      else
-        echo 'No active environment; not running'
-      fi
-    }
-
 # }
 
 # zshrc.local {
