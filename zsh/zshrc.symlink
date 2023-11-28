@@ -41,6 +41,10 @@ OS=$(uname -s)
 	export PATH="$HOME/.pyenv/bin:$PATH"
 # }
 
+# Direnv {
+  eval "$(direnv hook zsh)"
+# }
+
 # Python {
   eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"

@@ -1,6 +1,7 @@
 colordiff
 coreutils
 curl
+direnv
 fasd
 git
 git-flow
